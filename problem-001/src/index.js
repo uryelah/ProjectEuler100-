@@ -6,6 +6,7 @@ const looseJsonParse = (obj) => {
 }
 
 const populateNums = (n) => {
+  totalSum = 0;
   document.getElementById('nums').innerHTML = '';
   for (let i = 1; i < n; i++) {
     document.getElementById('nums').innerHTML += `<div class="num" value="${i}">${i}</div>`;
@@ -18,8 +19,9 @@ const populateNums = (n) => {
 window.onload = () => {
   const restartBtn =  document.getElementById('reStart');
   const runBtn = document.getElementById('runCode');
-  const numInput = document.getElementById('parameter');
+  let numInput = document.getElementById('parameter');
   const resultMessage = document.getElementById('result-message');
+  let text = document.getElementById('code-space').innerText;
 
   populateNums(numInput.value);
 
@@ -34,27 +36,26 @@ window.onload = () => {
   runBtn.addEventListener('click', (e) => {
     if (!playable) return;
 
+    numInput = document.getElementById('parameter');
     playable = false;
     e.target.classList.remove('activated');
     e.target.classList.add('deactivated');
     numInput.setAttribute('disabled', true);
+    text = document.getElementById('code-space').innerText;
     
     let replaceVal = `multipleSum(${numInput.value})`
-    let text = document.getElementById('code-space').innerText;
     text = text.replace('multipleSum(n)', replaceVal)
 
     const result = looseJsonParse(
       eval(text)
     );
     
-    let count = 0;
     [...document.getElementsByClassName('num')].forEach(num => {
       num.classList.remove('picked');
       num.classList.remove('exploded');
       num.classList.remove('safe');
       if (parseInt(num.getAttribute('value')) % 3 === 0 || parseInt(num.getAttribute('value')) % 5 === 0) {
         num.classList.add('safe');
-        count += parseInt(num.getAttribute('value'));
       } else {
         if (result === totalSum) {
           num.classList.add('picked');
