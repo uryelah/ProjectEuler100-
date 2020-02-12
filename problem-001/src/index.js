@@ -1,11 +1,11 @@
 let totalSum = 0;
 let playable = true;
 
-function looseJsonParse(obj) {
+const looseJsonParse = (obj) => {
   return Function('"use strict";return (' + obj + ')')();
 }
 
-function populateNums(n) {
+const populateNums = (n) => {
   document.getElementById('nums').innerHTML = '';
   for (let i = 1; i < n; i++) {
     document.getElementById('nums').innerHTML += `<div class="num" value="${i}">${i}</div>`;
@@ -16,9 +16,14 @@ function populateNums(n) {
 }
 
 window.onload = () => {
-  populateNums(document.getElementById('parameter').value);
+  const restartBtn =  document.getElementById('reStart');
+  const runBtn = document.getElementById('runCode');
+  const numInput = document.getElementById('parameter');
+  const resultMessage = document.getElementById('result-message');
 
-  document.getElementById('parameter').addEventListener('change', (e) => {
+  populateNums(numInput.value);
+
+  numInput.addEventListener('change', (e) => {
     if (!playable) {
       return
     };
@@ -26,15 +31,15 @@ window.onload = () => {
     populateNums(parseInt(e.target.value));
   })
 
-  document.getElementById('runCode').addEventListener('click', (e) => {
+  runBtn.addEventListener('click', (e) => {
     if (!playable) return;
 
     playable = false;
     e.target.classList.remove('activated');
     e.target.classList.add('deactivated');
-    document.getElementById('parameter').setAttribute('disabled', true);
+    numInput.setAttribute('disabled', true);
     
-    let replaceVal = `multipleSum(${document.getElementById('parameter').value})`
+    let replaceVal = `multipleSum(${numInput.value})`
     let text = document.getElementById('code-space').innerText;
     text = text.replace('multipleSum(n)', replaceVal)
 
@@ -59,22 +64,22 @@ window.onload = () => {
       }
     });
     if (result === totalSum) {
-      document.getElementById('result-message').innerText = 'Congratulations all mines were found';
+      resultMessage.innerText = 'Congratulations all mines were found';
     } else {
-      document.getElementById('result-message').innerText = 'KABOOM!!!!! No luck this time...';
+      resultMessage.innerText = 'KABOOM!!!!! No luck this time...';
     }
 
-    document.getElementById('reStart').classList.remove('deactivated');
-    document.getElementById('reStart').classList.add('activated');
+    restartBtn.classList.remove('deactivated');
+    restartBtn.classList.add('activated');
   }); 
   
-  document.getElementById('reStart').addEventListener('click', e => {
-    document.getElementById('reStart').classList.add('deactivated');
-    document.getElementById('reStart').classList.remove('activated');
-    document.getElementById('runCode').classList.add('activated');
-    document.getElementById('runCode').classList.remove('deactivated');
-    document.getElementById('parameter').removeAttribute('disabled');
-    document.getElementById('result-message').innerText = '';
+  restartBtn.addEventListener('click', e => {
+    restartBtn.classList.add('deactivated');
+    restartBtn.classList.remove('activated');
+    runBtn.classList.add('activated');
+    runBtn.classList.remove('deactivated');
+    numInput.removeAttribute('disabled');
+    resultMessage.innerText = '';
     [...document.getElementsByClassName('num')].forEach(num => {
       num.classList.remove('picked');
       num.classList.remove('exploded');
