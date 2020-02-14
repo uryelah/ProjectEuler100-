@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css?family=Space+Mono:400,700i&display=swap');
+body {
+  font-family: 'Space Mono', monospace;
+  padding: 0;
+  margin: 0;
+  background-color: lightgrey;
+  background-color: black;
+  background-image: radial-gradient(rgba(0, 0, 170, 0.7), rgba(0, 0, 0, 0.7)), url('./milky.jpg');
+  background-size: cover;
+}
+
+#fibs {
+  display: grid;
+  height: 100vh;
+  margin: 50px;
+  box-sizing: border-box;
+  grid-template-columns: repeat(501, 2px);
+  grid-template-rows: repeat(901, 2px);
+  grid-auto-columns: 2px;
+  grid-auto-rows: 2px;
+  transform-origin: center;
+  zanimation: rotate 33s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+.fib {
+  width: 5px;
+  height: 5px;
+  box-sizing: border-box;
+  background-color: #fff;
+  column-count: 2;
+  display: flex;
+  justify-content: content;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+  font-size: 2rem;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+#counter {
+  display: none;
+  font-weight: 700;
+  font-style: italic;
+  text-shadow: 0.1px 0.1px 0 rgb(0, 0, 170);
+}
+
+.up {
+  display: flex !important;
+  font-size: 2.3px;
+  transform-origin: center;
+  transform: translateX(calc(50vw - 10px)) translateY(calc(50vh)) scale(1);
+  position: absolute;
+  background-color: rgba(224, 255, 255, 0.233);
+  color: gold;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transition: 0.2s ease-in-out;
+  z-index: 1000;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+}
+
+.even-fib {
+  background-color: rgb(255, 238, 82);
+  transition: 0.7s ease-in;
+}
+
+.chill {
+  width: 80%;
+  height: 70%;
+  background-color: unset;
+  border: 1px solid #fff;
+  transform-origin: center;
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  stransform: translateY(0) rotate(0) scale(0) !important;
+}
+
+input {
+  display: inline-block;
+  width: 400px;
+  height: 50px;
+  position: absolute;
+  top: calc(50vh - 25px);
+  left: calc(50vw - 200px);
+  border: 1px solid white;
+  border-radius: 0px;
+  box-sizing: border-box;
+  padding: 10px 30px;
+  font-size: 1.4rem;
+  background-color: #ffffffbb;
+  font-weight: 700;
+}
+
+input:hover, input:active {
+  border: 1px solid gold;
+}
+
+button {
+  width: 300px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  box-sizing: border-box;
+  padding: 30px 10px;
+  position: absolute;
+  top: calc(50vh + 50px);
+  left: calc(50vw - 150px);
+  border: 1px solid gold;
+  color: gold;
+  font-weight: 700;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 170, 0.3);
+  cursor: pointer;
+  transition: 0.3s ease-in;
+}
+
+button:active, button:hover {
+  background-color: rgba(0, 0, 170, 0.9);
+}
+
+.dis {
+  display: none;
+}
+
+#again {
+  top: calc(50vh + 100px);
+  z-index: 10000;
+}
+
+#meme {
+  transform: scale(5) scaleX(-1) rotate(-20deg);
+  opacity: 0;
+  position: absolute;
+  bottom: 100px;
+  right: 50px;
+  transition: 1s ease-in;
+  z-index: 100000000;
+  pointer-events: none;
+}
+
+.o1 {
+  opacity: 0.3 !important;
+  transition: 3s ease-in;
+}
