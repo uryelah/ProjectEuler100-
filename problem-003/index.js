@@ -156,12 +156,16 @@ function nextStart(biggestPlayer, arr) {
 
 window.onload = () => {
     const numInp = document.getElementById('num');
-    const titleText = document.getElementById('form-text');
     const arrInp = document.getElementById('arr');
-    const moreText = document.getElementById('more-text');
     const primeNum = document.getElementById('prime');
+    const titleText = document.getElementById('form-text');
+    const moreText = document.getElementById('more-text');
     const autoBtn = document.getElementById('toggle-auto');
     titleText.innerText = numInp.dataset.text;
+
+    numInp.value = '';
+    arrInp.value = '';
+    primeNum.value = '';
 
     const restart = () => {
         STATE = 'BEFORE';
@@ -188,6 +192,9 @@ window.onload = () => {
         let builder = document.getElementById('builder');
         builder.classList.remove('playing');
         builder.style = '';
+        numInp.value = '';
+        arrInp.value = '';
+        primeNum.value = '';
     }
 
     const startGame = (e, auto = false) => {
