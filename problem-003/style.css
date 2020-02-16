@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css?family=Play:400,700&display=swap');
+
+body {
+    background-color: lightgray;
+}
+
+main {
+    background-color: rgb(47, 248, 171);
+    overflow: hidden;
+    width: 300px;
+    height: 90vh;
+    margin: 0 auto;
+    position: relative;
+    background-image: url('./img/check.png');
+    background-size: 30px 30px;
+}
+
+.form {
+    position: absolute;
+    top: 50px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    width: 300px;
+    box-sizing: border-box;
+    align-items: center;
+    color: #f174ca;
+    font-weight: 900;
+    text-shadow: 1px 1px 0 #45283c;
+    font-family: 'Play', sans-serif;
+}
+
+.btn {
+    box-sizing: border-box;
+    border: 3px solid #45283c;
+    background-color: #f174ca;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    font-weight: 700;
+    font-family: 'Play', sans-serif;
+    padding: 5px 12px;
+    color: #45283c;
+    text-shadow: 1px 1px 0 rgb(245, 222, 18);
+    font-size: 1.1rem;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.25s ease-in;
+}
+
+.pulse {
+    animation: 1s pulsate infinite;
+}
+
+@keyframes pulsate {
+    0% {
+        box-shadow: 0 0 0 0 #45283c;
+    }
+    25% {
+        box-shadow: 0 0 0 5px #45283c;
+    }
+    30% {
+        box-shadow: 0 0 0 5px #45283c00;
+    }
+    31% {
+        box-shadow: 0 0 0 0 #45283c;
+    }
+    50% {
+        box-shadow: 0 0 0 5px #45283c;
+    }
+    55% {
+        box-shadow: 0 0 0 5px #45283c00;
+    }
+    56% {
+        box-shadow: 0 0 0 0 #45283c;
+    }
+}
+
+.btn:hover {
+    line-height: 1rem;
+}
+
+.btn:active {
+    color: rgb(245, 222, 18);
+    background-color: #45283c;
+    border-color: #f174ca;
+    text-shadow: none;
+}
+
+.form p {
+    margin: 0;
+    width: 80%;
+    color: #a34686;
+    text-align: center;
+}
+
+.form input {
+    box-sizing: border-box;
+    border: 2px solid #f174ca;
+    border-radius: 5px;
+    padding: 3px 5px;
+    margin: 10px 0;
+}
+
+.form input:hover, .form input:focus {
+    border: 5px solid #f174ca;
+}
+
+#num {
+    margin: 10px;
+}
+
+.bellow {
+    width: 100%;
+    height: 50%;
+}
+
+.floor {
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(47, 248, 171);
+    z-index: 1;
+    background-image: url('./img/clouds.png');
+    background-position: bottom;
+    background-repeat: repeat-x;
+    animation: slide 120s linear infinite;
+    animation-direction: alternate;
+    transform: translate3d(0, 0, 0);
+}
+
+.floor:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(47, 248, 171);
+    z-index: 1;
+    background-image: url('./img/clouds.png');
+    background-position: bottom;
+    background-repeat: repeat-x;
+    transform: translate3d(100%, 0, 0);
+}
+
+@keyframes slide {
+    100% {
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+.builder {
+    height: 64px;
+    width: 64px;
+    background-image: url('./img/b-0.png');
+    animation: 0.5s bounce infinite;
+    z-index: 100;
+    position: absolute;
+    left: 0;
+    top: calc(50% + 50px);
+}
+
+@keyframes bounce {
+    0% {
+        background-image: url('./img/b-0.png');
+    }
+    100% {
+        background-image: url('./img/b-bounce.png');
+    }
+}
+
+.playing {
+    animation-delay: 1s;
+    animation: 1s martelar steps(4) 6 0s;/*, 0.5s bounce linear infinite 10s;*/
+    animation-play-state: running;
+    top: 0;
+}
+
+#stairs {
+    z-index: 90;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@keyframes martelar {
+    0% {
+        background-image: url('./img/b-0.png');
+    }
+    33% {
+        background-image: url('./img/b-1.png');
+    }
+    67% {
+        background-image: url('./img/b-2.png');
+    }
+    100% {
+        background-image: url('./img/b-3.png');
+    }
+}
+
+#wall {
+    display: flex;
+    flex-wrap: wrap;
+    height: fit-content;
+    position: relative;
+    margin: 0 auto;
+    justify-items: flex-end;
+    align-content: flex-end;
+    transform-origin: center;
+    height: 50vh;
+    z-index: 10;
+    margin-bottom: 50vh;
+    background-position: bottom left;
+    background-size: 50px 30px;
+    background-repeat: repeat-x;
+}
+
+.show-wall {
+    position: relative;
+    background-image: url('./img/brick.png');
+}
+
+.shake {
+    animation: 2s shakeAndBreak;
+    transform-origin: bottom;
+}
+
+@keyframes shakeAndBreak {
+    0% {
+        transform: rotate(0);
+        filter: brightness(1);
+    }
+    2.5% {
+        transform: rotate(1deg) translateY(-3px);
+    }
+    5% {
+        transform: rotate(-1deg) translateY(0px);
+    }
+    7.5% {
+        transform: rotate(1deg) translateY(-3px);
+    }
+    10% {
+        transform: rotate(-1deg);
+        filter: brightness(1.5);
+    }
+    12.5% {
+        transform: rotate(0);
+    }
+    14% {
+        transform: rotate(2deg) translateY(-4px);
+    }
+    16% {
+        transform: rotate(-2deg) translateY(0px);
+    }
+    18% {
+        transform: rotate(2deg) translateY(-3px);
+    }
+    20% {
+        transform: rotate(-2deg);
+        filter: brightness(0.8);
+    }
+    22% {
+        transform: rotate(0);
+    }
+    24% {
+        transform: rotate(3deg) translateY(-5px);
+    }
+    26% {
+        transform: rotate(-2deg) translateY(0px);
+    }
+    28% {
+        transform: rotate(1deg) translateY(-3px);
+    }
+    30% {
+        transform: rotate(-1deg);
+    }
+    32% {
+        transform: rotate(0);
+        filter: brightness(1.5);
+    }
+}
+
+.brick {
+    color: #45283c;
+    text-shadow: 1px 1px 0 #d77bba;
+    height: 30px;
+    width: 50px;
+    background-image: url('./img/brick.png');
+    background-size: cover;
+    transition: 0.2s ease-out;
+    margin-top: -2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 1.8rem;
+    box-sizing: border-box;
+    padding: 0 3px;
+}
+
+.prime {
+    box-shadow: inset 0 0 1px 0 yellow;
+}
+
+.knock {
+   animation: 4s break steps(5);
+   animation-delay: 1.5s;
+   animation-fill-mode: forwards;
+   color: #45283c;
+}
+
+@keyframes break {
+    0% {
+        background-image: url('./img/brick.png');
+    }
+    25% {
+        background-image: url('./img/brick-b0.png');
+    }
+    50% {
+        background-image: url('./img/brick-b1.png');
+    }
+    75% {
+        background-image: url('./img/brick-b2.png');
+        color: #45283c;
+    }
+    100% {
+        background-image: url('./img/brick-b3.png');
+        color: rgb(245, 222, 18);
+    }
+}
+
+.noshow {
+    display: none;
+}
