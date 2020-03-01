@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap');
+
+:root {
+  --bg: yellowgreen;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  font-family: 'Roboto Mono', sans-serif;
+  overflow: hidden;
+  -webkit-transform: 0.3s ease-in;
+      -ms-transform: 0.3s ease-in;
+          transform: 0.3s ease-in;
+}
+
+input {
+  -webkit-transition: 0.3s ease-out;
+  -o-transition: 0.3s ease-out;
+  transition: 0.3s ease-out;
+  margin: 0;
+  margin-top: calc(50vh - 100px);
+  padding: 0 10%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
+  height: 100px;
+  opacity: 0;
+  background-color: transparent;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  border: none;
+  -webkit-box-shadow: 0 50px 0 -40px black;
+          box-shadow: 0 50px 0 -40px black;
+  pointer-events: all;
+  z-index: 100;
+  -webkit-animation: fadeIn 0.5s ease-out forwards;
+          animation: fadeIn 0.5s ease-out forwards;
+}
+
+.count {
+  font-size: 2rem;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+}
+
+.container {
+  width: 55px;
+  height: 55px;
+  margin: 0 auto;
+  margin-top: 100px;
+  position: relative;
+  background-color: black;
+  -webkit-transform-origin: top left;
+      -ms-transform-origin: top left;
+          transform-origin: top left;
+  -webkit-transform: scale(0, 0);
+      -ms-transform: scale(0, 0);
+          transform: scale(0, 0);
+  -webkit-transition: 0.5s cubic-bezier(.68,-0.55,.56,2.15);
+  -o-transition: 0.5s cubic-bezier(.68,-0.55,.56,2.15);
+  transition: 0.5s cubic-bezier(.68,-0.55,.56,2.15);
+  -webkit-animation: 0.3s appear cubic-bezier(.68,-0.55,.27,1.55) forwards;
+          animation: 0.3s appear cubic-bezier(.68,-0.55,.27,1.55) forwards;
+  color: var(--bg);
+  font-weight: 600;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.reduce {
+  -webkit-transform-origin: bottom center !important;
+      -ms-transform-origin: bottom center !important;
+          transform-origin: bottom center !important;
+}
+
+.inner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 2px dashed var(--bg);
+  color: var(--bg) !important;
+  -webkit-transform-origin: top left;
+      -ms-transform-origin: top left;
+          transform-origin: top left;
+  -webkit-transform: scale(1, 0);
+      -ms-transform: scale(1, 0);
+          transform: scale(1, 0);
+  -webkit-transition: 0.4s cubic-bezier(.9,.03,.69,.22);
+  -o-transition: 0.4s cubic-bezier(.9,.03,.69,.22);
+  transition: 0.4s cubic-bezier(.9,.03,.69,.22);
+  -webkit-animation: 0.2s disappear cubic-bezier(.9,.03,.69,.22) forwards;
+          animation: 0.2s disappear cubic-bezier(.9,.03,.69,.22) forwards;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+
+.patch {
+  position: absolute;
+  right: -2px;
+  top: -2px;
+  height: 19.92px;
+  width: 30.5px;
+  background-color: black;
+  border: 2px solid black;
+  -webkit-animation: stretch 1s cubic-bezier(.68,-0.55,.56,2.15) forwards;
+          animation: stretch 1s cubic-bezier(.68,-0.55,.56,2.15) forwards;
+  -webkit-animation-delay: 3.3s;
+          animation-delay: 3.3s;
+  z-index: 10;
+}
+
+.patch:after {
+  content: '';
+  position: absolute;
+  bottom: calc(100.6% + 1.6px);
+  right: -1.5px;
+  width: 36.3px;
+  height: 9.96px;
+  background-color: var(--bg);
+}
+
+@-webkit-keyframes stretch {
+  100% {
+    width: 55px;
+    height: 12.62px;
+    top: 6px;
+  }
+}
+
+@keyframes stretch {
+  100% {
+    width: 55px;
+    height: 12.62px;
+    top: 6px;
+  }
+}
+
+@-webkit-keyframes grow {
+  100% {
+    -webkit-transform: scale(1,1);
+            transform: scale(1,1);
+  }
+}
+
+@keyframes grow {
+  100% {
+    -webkit-transform: scale(1,1);
+            transform: scale(1,1);
+  }
+}
+
+@-webkit-keyframes growBoth {
+  30% {
+    -webkit-transform: scale(1,1);
+            transform: scale(1,1);
+    height: 0;
+  }
+  45% {
+    -webkit-transform: scale(1,1);
+            transform: scale(1,1);
+    height: 0;
+  }
+  100% {
+    -webkit-transform: scale(1,1);
+            transform: scale(1,1);
+    height: 19.62px;
+  }
+}
+
+@keyframes growBoth {
+  30% {
+    -webkit-transform: scale(1,1);
+            transform: scale(1,1);
+    height: 0;
+  }
+  45% {
+    -webkit-transform: scale(1,1);
+            transform: scale(1,1);
+    height: 0;
+  }
+  100% {
+    -webkit-transform: scale(1,1);
+            transform: scale(1,1);
+    height: 19.62px;
+  }
+}
+
+@-webkit-keyframes disappear {
+  100% {
+    background-color: var(--bg);
+  }
+}
+
+@keyframes disappear {
+  100% {
+    background-color: var(--bg);
+  }
+}
+
+p {
+  -webkit-transition: 0.2s ease-out;
+  -o-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
+  font-size: 1.2em;
+}
+
+.hide-text {
+  color: transparent;
+  -webkit-transition: 0.3s ease-in;
+  -o-transition: 0.3s ease-in;
+  transition: 0.3s ease-in;
+}
+
+.hide-up {
+  -webkit-animation: 0.3s hidUp ease-out forwards;
+          animation: 0.3s hidUp ease-out forwards;
+}
+
+@-webkit-keyframes hidUp {
+  100% {
+    -webkit-transform: scale(0, 0) translateY(-900px);
+            transform: scale(0, 0) translateY(-900px);
+  }
+}
+
+@keyframes hidUp {
+  100% {
+    -webkit-transform: scale(0, 0) translateY(-900px);
+            transform: scale(0, 0) translateY(-900px);
+  }
+}
+
+@-webkit-keyframes appear {
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+}
+
+@keyframes appear {
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
